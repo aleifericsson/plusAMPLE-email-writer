@@ -1,0 +1,50 @@
+{
+    "name": "react-alfa",
+    "version": "1.0.0",
+    "main": "main.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "watch": "npx watchify -t [ babelify --presets  [@babel/preset-react]  ] -t browserify-css main.js -o bundle.js",
+        "build": "browserify -t [ babelify --presets  [@babel/preset-react]  ] -t browserify-css main.js > bundle.js",
+        "watch-ext": "npx watchify -t [ babelify --presets  [@babel/preset-react]  ] -t browserify-css ext-main.js -o ext-bundle.js",
+        "build-ext": "browserify -t [ babelify --presets  [@babel/preset-react]  ] -t browserify-css ext-main.js > ext-bundle.js",
+        "build-all": "npm run build & npm run build-ext",
+        "watch-all": "npm run watch & npm run watch-ext"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "dependencies": {
+        "@babel/core": "^7.24.9",
+        "react": "^18.3.1",
+        "react-dom": "^18.3.1",
+        "react-hook-form": "^7.52.2"
+    },
+    "devDependencies": {
+        "@babel/plugin-transform-react-jsx": "^7.25.2",
+        "@babel/plugin-transform-runtime": "^7.24.7",
+        "@babel/preset-env": "^7.24.8",
+        "@babel/preset-react": "^7.24.7",
+        "@loadable/babel-plugin": "^5.16.1",
+        "babel-preset-env": "^1.7.0",
+        "babel-preset-es2015": "^6.24.1",
+        "babel-preset-stage-0": "^6.24.1",
+        "babelify": "^10.0.0",
+        "browserify": "^17.0.0",
+        "browserify-css": "^0.15.0",
+        "watchify": "^4.0.0"
+    },
+    "browserify": {
+        "transform": [
+            [
+                "babelify",
+                {
+                    "presets": [
+                        "@babel/preset-env"
+                    ]
+                }
+            ]
+        ]
+    }
+}
