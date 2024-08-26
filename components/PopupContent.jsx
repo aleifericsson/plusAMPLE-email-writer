@@ -1,13 +1,26 @@
-
-const [content, setContent] = useState(0)
+import { useState } from "react"
+import GenMenu from "./GenMenu.jsx"
 
 export default function PopupContent(){
     
+    const [content, setContent] = useState("default")
+
     const openGenMenu = () => {
-        
+        setContent("generate")
     }
 
-    return(
-        <button onClick={openGenMenu}>Generate with AI?</button>
-    )
+    const goBack = () => {
+        setContent("default")
+    }
+
+    switch (content){
+        case "generate":
+            return(
+                <GenMenu back = {goBack}/>
+            )
+        default:
+            return(
+                <button onClick={openGenMenu}>Generate with AI?</button>
+            )
+    }
 }

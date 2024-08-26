@@ -1,8 +1,8 @@
 {
     "manifest_version": 3,
-    "name": "Extensions ALFA",
+    "name": "+Ample",
     "icons":{
-        "512":"images/alfa.png"
+        "256":"images/plus_a.png"
     },
     "version": "1.0.0",
     "action":{
@@ -28,8 +28,7 @@
         "matches":[
             "http://*/*",
             "https://*/*"
-        ],
-        "css": ["content.css"]
+        ]
       }
     ],
     "commands": {

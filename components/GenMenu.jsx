@@ -2,7 +2,7 @@ import '../styles/Popup.css'
 
 import { useForm } from 'react-hook-form';
 
-export default function GenMenu({props}){ //props: {startx, starty}
+export default function GenMenu({back}){ //props: {startx, starty}
 
     const { register, handleSubmit, formState: { errors } } = useForm();
 
@@ -12,7 +12,8 @@ export default function GenMenu({props}){ //props: {startx, starty}
     };
 
     return(
-        <div className="popup" style={{left:props.startx,top:props.starty}}>
+        <div>
+            <button onClick={back}>Back</button>
             <div className="title">Email Writer</div>
             <form className="gen-menu" onSubmit={handleSubmit(onSubmit)}>
             <fieldset>
