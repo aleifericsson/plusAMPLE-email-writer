@@ -6,8 +6,8 @@
         "test": "echo \"Error: no test specified\" && exit 1",
         "watch": "npx watchify -t [ babelify --presets  [@babel/preset-react]  ] -t browserify-css main.js -o bundle.js",
         "build": "browserify -t [ babelify --presets  [@babel/preset-react]  ] -t browserify-css main.js > bundle.js",
-        "watch-ext": "npx watchify -t [ babelify --presets  [@babel/preset-react]  ] -t browserify-css ext-main.js -o ext-bundle.js",
-        "build-ext": "browserify -t [ babelify --presets  [@babel/preset-react]  ] -t browserify-css ext-main.js > ext-bundle.js",
+        "watch-ext": "npx watchify -t [ babelify --presets  [@babel/preset-react]  ] -t browserify-css main-ext.js -o bundle-ext.js",
+        "build-ext": "browserify -t [ babelify --presets  [@babel/preset-react]  ] -t browserify-css main-ext.js > bundle-ext.js",
         "build-all": "npm run build & npm run build-ext",
         "watch-all": "npm run watch & npm run watch-ext"
     },

@@ -2,7 +2,7 @@
     "manifest_version": 3,
     "name": "Extensions ALFA",
     "icons":{
-        "256":"plus_a.png"
+        "512":"images/alfa.png"
     },
     "version": "1.0.0",
     "action":{
@@ -17,14 +17,19 @@
     "host_permissions":[
       "http://*/*",
       "https://*/*"
-    ],
+    ], 
+    "web_accessible_resources": [{
+      "resources": ["images/close.png"],
+      "matches": ["<all_urls>"]
+    }],
     "content_scripts": [
       {
-        "js": ["ext-bundle.js"],
+        "js": ["bundle-ext.js"],
         "matches":[
             "http://*/*",
             "https://*/*"
-        ]
+        ],
+        "css": ["content.css"]
       }
     ],
     "commands": {

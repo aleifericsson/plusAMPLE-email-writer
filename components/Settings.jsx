@@ -3,8 +3,6 @@ import { sendMessage } from "../scripts/ext-qol";
 
 export default function Settings({props}){
     const [popup_visible, set_visible] = useState(false);
-
-    const changeBackground = () => sendMessage({message: "change_color", color: "#BADA55" })
     
     const togglePopup = (event) => {
         set_visible(!popup_visible)
@@ -13,7 +11,6 @@ export default function Settings({props}){
 
     return(
         <>
-            <button onClick={changeBackground}>Hey</ button>
             <label>
                 <input
                 type="checkbox"

@@ -2,15 +2,9 @@
     position:absolute;
     transform: translate(-50%,-100%);
     font-size: 1em;
-    padding:15px;
     margin:1em 0 3em;
     color:#000;
-    background:#f3961c; /* default background for browsers without gradient support */
-    /* css3 */
-    background:-webkit-gradient(linear, 0 0, 0 100%, from(#f9d835), to(#f3961c));
-    background:-moz-linear-gradient(#f9d835, #f3961c);
-    background:-o-linear-gradient(#f9d835, #f3961c);
-    background:linear-gradient(#f9d835, #f3961c);
+    background:#c7c7c7; 
     -webkit-border-radius:10px;
     -moz-border-radius:10px;
     border-radius:10px;
@@ -24,17 +18,14 @@
     transform: translate(-50%,0);
     border-width:10px 10px 0; /* vary these values to change the angle of the vertex */
     border-style:solid;
-    border-color:#f3961c transparent;
+    border-color:#c7c7c7 transparent;
     /* reduce the damage in FF3.0 */
     display:block;
     width:0;
   }
   
 .popup.top {
-    background:-webkit-gradient(linear, 0 0, 0 100%, from(#f3961c), to(#f9d835));
-    background:-moz-linear-gradient(#f3961c, #f9d835);
-    background:-o-linear-gradient(#f3961c, #f9d835);
-    background:linear-gradient(#f3961c, #f9d835);
+    background: #c7c7c7
   }
 
   
@@ -45,5 +36,26 @@
     bottom:auto;
     left:auto;
     border-width:0 10px 10px; /* vary these values to change the angle of the vertex */
-    border-color:#f3961c transparent;
+    border-color:#c7c7c7 transparent;
   }
+
+.close-icon{
+  background-size: contain;
+  height: 0.6em;
+  width: 0.6em;
+}
+
+.top-bar{
+  display:flex;
+  justify-content: end;
+  background: #9c9c9c;
+  padding:2px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding-right:5px;
+}
+
+.popup-content{
+  padding: 10px;
+  padding-top: 5px;
+}
