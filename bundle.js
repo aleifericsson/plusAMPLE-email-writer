@@ -23,6 +23,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = GenMenu;
 var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
+var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
+var _react = require("react");
 require("../styles/Popup.css");
 var _reactHookForm = require("react-hook-form");
 var _jsxRuntime = require("react/jsx-runtime");
@@ -46,7 +48,7 @@ function _objectSpread(e) {
     });
   }
   return e;
-}
+} //import InputTag from './InputTags.jsx';
 function GenMenu(_ref) {
   var back = _ref.back;
   //props: {startx, starty}
@@ -55,16 +57,20 @@ function GenMenu(_ref) {
     register = _useForm.register,
     handleSubmit = _useForm.handleSubmit,
     errors = _useForm.formState.errors;
+  var _useState = (0, _react.useState)("Unknown"),
+    _useState2 = (0, _slicedToArray2["default"])(_useState, 2),
+    addressVal = _useState2[0],
+    setAddressVal = _useState2[1];
 
   // Define the onSubmit handler
   var onSubmit = function onSubmit(data) {
-    alert("Form submitted with addressed to: ".concat(data.addressedTo));
+    alert("Form submitted with addressed to: ".concat(data.addressedTo, " ").concat(data.theName));
+  };
+  var handleRadioChange = function handleRadioChange(value) {
+    setAddressVal(value);
   };
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
-      onClick: back,
-      children: "Back"
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
       className: "title",
       children: "Email Writer"
     }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("form", {
@@ -74,66 +80,110 @@ function GenMenu(_ref) {
         children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("legend", {
           children: "Addressed To:"
         }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-          children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("input", _objectSpread({
+          children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("input", _objectSpread(_objectSpread({
             type: "radio",
             id: "Unknown",
-            value: "Unknown"
+            value: "Unknown",
+            checked: addressVal === "Unknown"
           }, register("addressedTo", {
             required: "Please select an option."
-          }))), /*#__PURE__*/(0, _jsxRuntime.jsx)("label", {
+          })), {}, {
+            onChange: function onChange() {
+              return handleRadioChange("Unknown");
+            }
+          })), /*#__PURE__*/(0, _jsxRuntime.jsx)("label", {
             htmlFor: "Unknown",
             children: "Unknown"
           })]
         }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-          children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("input", _objectSpread({
+          children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("input", _objectSpread(_objectSpread({
             type: "radio",
-            id: "Mr",
-            value: "Mr"
+            id: "Mr.",
+            value: "Mr.",
+            checked: addressVal === "Mr"
           }, register("addressedTo", {
             required: "Please select an option."
-          }))), /*#__PURE__*/(0, _jsxRuntime.jsx)("label", {
+          })), {}, {
+            onChange: function onChange() {
+              return handleRadioChange("Mr");
+            }
+          })), /*#__PURE__*/(0, _jsxRuntime.jsx)("label", {
             htmlFor: "Mr",
             children: "Mr."
           })]
         }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-          children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("input", _objectSpread({
+          children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("input", _objectSpread(_objectSpread({
             type: "radio",
-            id: "Ms",
-            value: "Ms"
+            id: "Ms.",
+            value: "Ms.",
+            checked: addressVal === "Ms"
           }, register("addressedTo", {
             required: "Please select an option."
-          }))), /*#__PURE__*/(0, _jsxRuntime.jsx)("label", {
+          })), {}, {
+            onChange: function onChange() {
+              return handleRadioChange("Ms");
+            }
+          })), /*#__PURE__*/(0, _jsxRuntime.jsx)("label", {
             htmlFor: "Ms",
             children: "Ms."
           })]
         }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-          children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("input", _objectSpread({
+          children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("input", _objectSpread(_objectSpread({
             type: "radio",
-            id: "Mrs",
-            value: "Mrs"
+            id: "Mrs.",
+            value: "Mrs.",
+            checked: addressVal === "Mrs"
           }, register("addressedTo", {
             required: "Please select an option."
-          }))), /*#__PURE__*/(0, _jsxRuntime.jsx)("label", {
+          })), {}, {
+            onChange: function onChange() {
+              return handleRadioChange("Mrs");
+            }
+          })), /*#__PURE__*/(0, _jsxRuntime.jsx)("label", {
             htmlFor: "Mrs",
             children: "Mrs."
           })]
+        }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+          children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("input", _objectSpread(_objectSpread({
+            type: "radio",
+            id: "no-title",
+            value: "",
+            checked: addressVal === "no-title"
+          }, register("addressedTo", {
+            required: "Please select an option."
+          })), {}, {
+            onChange: function onChange() {
+              return handleRadioChange("no-title");
+            }
+          })), /*#__PURE__*/(0, _jsxRuntime.jsx)("label", {
+            htmlFor: "no-title",
+            children: "No Title"
+          })]
         }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-          children: /*#__PURE__*/(0, _jsxRuntime.jsx)("input", _objectSpread({
+          children: addressVal !== "Unknown" && /*#__PURE__*/(0, _jsxRuntime.jsx)("input", _objectSpread({
             type: "text",
             placeholder: "Name"
-          }, register("the-name")))
+          }, register("theName", {
+            required: "Please write a name."
+          })))
         })]
       }), errors.addressedTo && /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
         children: errors.addressedTo.message
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
-        type: "submit",
-        children: "Submit"
+      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+        className: "bottom-bar",
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
+          onClick: back,
+          children: "Back"
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
+          type: "submit",
+          children: "Submit"
+        })]
       })]
     })]
   });
 }
 
-},{"../styles/Popup.css":39,"@babel/runtime/helpers/defineProperty":10,"@babel/runtime/helpers/interopRequireDefault":11,"react-hook-form":25,"react/jsx-runtime":31}],3:[function(require,module,exports){
+},{"../styles/Popup.css":39,"@babel/runtime/helpers/defineProperty":10,"@babel/runtime/helpers/interopRequireDefault":11,"@babel/runtime/helpers/slicedToArray":14,"react":30,"react-hook-form":25,"react/jsx-runtime":31}],3:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -292,7 +342,7 @@ var _App = _interopRequireDefault(require("./components/App.jsx"));
 var _Popup = _interopRequireDefault(require("./components/Popup.jsx"));
 var _Settings = _interopRequireDefault(require("./components/Settings.jsx"));
 var _jsxRuntime = require("react/jsx-runtime");
-_client["default"].createRoot(document.getElementById('react-root')).render( /*#__PURE__*/(0, _jsxRuntime.jsx)(_react["default"].StrictMode, {
+_client["default"].createRoot(document.getElementById('settings-react-root')).render( /*#__PURE__*/(0, _jsxRuntime.jsx)(_react["default"].StrictMode, {
   children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Settings["default"], {})
 }));
 
@@ -35940,7 +35990,7 @@ function sendMessage(message) {
 }
 function generateRoot() {
   var rot = (0, _qol.create)("div");
-  (0, _qol.addClass)(rot, "react-root");
+  (0, _qol.addClasses)(rot, ["react-root", "plus-ample"]);
   return rot;
 }
 
@@ -36082,7 +36132,7 @@ var getPosEle = function getPosEle(element, size) {
 },{}],38:[function(require,module,exports){
 var css = ".bruh {\n  color: white;\n  font-size: 50px;\n}\n"; (require("browserify-css").createStyle(css, { "href": "styles\\App.css" }, { "insertAt": "bottom" })); module.exports = css;
 },{"browserify-css":19}],39:[function(require,module,exports){
-var css = ".popup {\n  position: absolute;\n  transform: translate(-50%,-100%);\n  font-size: 1em;\n  margin: 1em 0 3em;\n  color: #000;\n  background: #c7c7c7;\n  -webkit-border-radius: 10px;\n  -moz-border-radius: 10px;\n  border-radius: 10px;\n}\n.popup:after {\n  content: \"\";\n  position: absolute;\n  bottom: -10px;\n  /* value = - border-top-width - border-bottom-width */\n  left: 50%;\n  /* controls horizontal position */\n  transform: translate(-50%,0);\n  border-width: 10px 10px 0;\n  /* vary these values to change the angle of the vertex */\n  border-style: solid;\n  border-color: #c7c7c7 transparent;\n  /* reduce the damage in FF3.0 */\n  display: block;\n  width: 0;\n}\n.popup.top {\n  background: #c7c7c7;\n}\n.popup.top:after {\n  top: -10px;\n  /* value = - border-top-width - border-bottom-width */\n  left: 50%;\n  /* controls horizontal position */\n  transform: translate(-50%,0);\n  bottom: auto;\n  left: auto;\n  border-width: 0 10px 10px;\n  /* vary these values to change the angle of the vertex */\n  border-color: #c7c7c7 transparent;\n}\n.close-icon {\n  background-size: contain;\n  height: 0.6em;\n  width: 0.6em;\n}\n.top-bar {\n  display: flex;\n  justify-content: end;\n  background: #9c9c9c;\n  padding: 2px;\n  border-top-left-radius: 10px;\n  border-top-right-radius: 10px;\n  padding-right: 5px;\n}\n.popup-content {\n  padding: 10px;\n  padding-top: 5px;\n}\n"; (require("browserify-css").createStyle(css, { "href": "styles\\Popup.css" }, { "insertAt": "bottom" })); module.exports = css;
+var css = ".popup {\n  position: absolute;\n  transform: translate(-50%,-100%);\n  font-size: 1em;\n  margin: 1em 0 3em;\n  color: #000;\n  background: #c7c7c7;\n  -webkit-border-radius: 10px;\n  -moz-border-radius: 10px;\n  border-radius: 10px;\n}\n.popup:after {\n  content: \"\";\n  position: absolute;\n  bottom: -10px;\n  /* value = - border-top-width - border-bottom-width */\n  left: 50%;\n  /* controls horizontal position */\n  transform: translate(-50%,0);\n  border-width: 10px 10px 0;\n  /* vary these values to change the angle of the vertex */\n  border-style: solid;\n  border-color: #c7c7c7 transparent;\n  /* reduce the damage in FF3.0 */\n  display: block;\n  width: 0;\n}\n.popup.top {\n  background: #c7c7c7;\n}\n.popup.top:after {\n  top: -10px;\n  /* value = - border-top-width - border-bottom-width */\n  left: 50%;\n  /* controls horizontal position */\n  transform: translate(-50%,0);\n  bottom: auto;\n  left: auto;\n  border-width: 0 10px 10px;\n  /* vary these values to change the angle of the vertex */\n  border-color: #c7c7c7 transparent;\n}\n.close-icon {\n  background-size: contain;\n  height: 0.6em;\n  width: 0.6em;\n}\n.top-bar {\n  display: flex;\n  justify-content: end;\n  background: #9c9c9c;\n  padding: 2px;\n  border-top-left-radius: 10px;\n  border-top-right-radius: 10px;\n  padding-right: 5px;\n}\n.popup-content {\n  padding: 10px;\n  padding-top: 5px;\n}\n.bottom-bar {\n  display: flex;\n  justify-content: space-between;\n  padding: 5px;\n}\n"; (require("browserify-css").createStyle(css, { "href": "styles\\Popup.css" }, { "insertAt": "bottom" })); module.exports = css;
 },{"browserify-css":19}],40:[function(require,module,exports){
-var css = ".react-root {\n  position: absolute;\n  width: 100vw;\n  position: 100vh;\n  top: 0px;\n  left: 0px;\n}\n"; (require("browserify-css").createStyle(css, { "href": "styles\\Root.css" }, { "insertAt": "bottom" })); module.exports = css;
+var css = ".react-root {\n  position: absolute;\n  width: 100vw;\n  position: 100vh;\n  top: 0px;\n  left: 0px;\n}\n/*\r\ndiv.react-root.plus-ample * {\r\n    color:black;\r\n    padding:0px;\r\n    width:auto;\r\n    height:auto;\r\n}\r\n*/\n#settings-react-root {\n  color: black;\n}\n"; (require("browserify-css").createStyle(css, { "href": "styles\\Root.css" }, { "insertAt": "bottom" })); module.exports = css;
 },{"browserify-css":19}]},{},[7]);

@@ -5,4 +5,16 @@
     top:0px;
     left: 0px;
   }
+
+/*
+div.react-root.plus-ample * {
+    color:black;
+    padding:0px;
+    width:auto;
+    height:auto;
+}
+*/
   
+#settings-react-root {
+  color:black;
+}

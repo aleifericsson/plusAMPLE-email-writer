@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { addClass, create, write } from './qol';
+import { addClass, addClasses, create, write } from './qol';
 
 let root_render = null
 
@@ -33,7 +33,7 @@ function sendMessage(message){
 
 function generateRoot(){  
   const rot = create("div")
-  addClass(rot, "react-root")
+  addClasses(rot, ["react-root","plus-ample"])
   return rot
 }
 

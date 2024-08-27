@@ -4,7 +4,7 @@ import App from './components/App.jsx';
 import Popup from './components/Popup.jsx';
 import Settings from './components/Settings.jsx';
 
-ReactDOM.createRoot(document.getElementById('react-root')).render(
+ReactDOM.createRoot(document.getElementById('settings-react-root')).render(
     <React.StrictMode>
       <Settings />
     </React.StrictMode>
