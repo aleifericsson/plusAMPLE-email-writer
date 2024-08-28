@@ -2,12 +2,12 @@ import { useState } from 'react';
 import '../styles/Popup.css'
 
 import { useForm } from 'react-hook-form';
-//import InputTag from './InputTags.jsx';
+import InputTag from './InputTags.jsx';
 
 export default function GenMenu({back}){ //props: {startx, starty}
 
     const { register, handleSubmit, formState: { errors } } = useForm();
-
+    const [tags, setTags] = useState(["formal"]);
     const [ addressVal, setAddressVal] = useState("Unknown");
 
 
@@ -26,6 +26,14 @@ export default function GenMenu({back}){ //props: {startx, starty}
         <div>
             <div className="title">Email Writer</div>
             <form className="gen-menu" onSubmit={handleSubmit(onSubmit)}>
+                
+            <div className='title'>Email Description</div>
+                <input 
+                        type="textarea" 
+                        placeholder="brief description about your email..."
+                        {...register("description" , { required: "Please write a description." })}
+                />
+                
             <fieldset>
             <legend>Addressed To:</legend>
                 <div>
@@ -94,7 +102,7 @@ export default function GenMenu({back}){ //props: {startx, starty}
                 </div>
                 </fieldset>
 
-                {/*<InputTag />*/}
+                <InputTag tags={tags} setTags={setTags}/>
 
                 {errors.addressedTo && <p>{errors.addressedTo.message}</p>}
                 

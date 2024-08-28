@@ -65,3 +65,14 @@
   justify-content: space-between;
   padding: 5px;
 }
+
+.info{
+  font-size: 0.6em;
+}
+
+.title{
+  font-weight: bold;
+  font-size: 1.4em;
+  padding-top:5px;
+  
+}
