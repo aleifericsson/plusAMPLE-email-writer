@@ -87,13 +87,28 @@ const moveTo = (element, x, y) => {
     element.style.left = x+"px";
 }
 
-const getPos = (evt, myrect) =>{
+const getMousePos = (evt, myrect) =>{
     const rect = myrect.getBoundingClientRect();
     const mousePos = {
         x: evt.clientX - rect.left,
         y: evt.clientY - rect.top
     };
     return mousePos
+}
+
+const getMousePosAlt = (evt, myrect) =>{
+    const rect = myrect.getBoundingClientRect();
+    const mousePos = {
+        x: rect.right - evt.clientX,
+        y: rect.bottom - evt.clientY
+    };
+    return mousePos
+}
+
+const getElePos = (ele) =>{
+    const rect = ele.getBoundingClientRect();
+    
+    return {y: rect.top, x: rect.left}
 }
 
 
@@ -135,23 +150,4 @@ const checkCollisionReal = (thing1, thing2) => {
     return overlap;
 }
 
-const getPosEle = (element, size) => {
-    const left = element.style.left;
-    const top = element.style.top;
-    let x;
-    let y;
-    if (size === "none"){
-        x = Number(left.substring(0, left.length - 2));
-        y = Number(top.substring(0, top.length - 2));
-    }
-    else{
-        x = Number(left.substring(0, left.length - 2))+(size/2)
-        y = Number(top.substring(0, top.length - 2))+(size/2)
-    }
-    return {
-        x,
-        y
-    }
-}
-
-export {render, remove, create, addClass, addClasses,remClasses, hasClass, remClass, find, findAll, write, read, detect, undetect, style, attribs, isElement, moveTo}
+export {render, remove, create, addClass, addClasses,remClasses, hasClass, remClass, find, findAll, write, read, detect, undetect, style, attribs, isElement, moveTo, getElePos, getMousePos, getMousePosAlt}

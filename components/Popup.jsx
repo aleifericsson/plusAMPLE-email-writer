@@ -1,6 +1,5 @@
 //ONSCREEN POPUP NOT THE SETTINGS POPUP
 
-import { popup_pos, root } from '../main-ext.js'
 import { injectReact, removeReact } from '../scripts/ext-qol'
 import '../styles/Popup.css'
 import PopupContent from './PopupContent.jsx'

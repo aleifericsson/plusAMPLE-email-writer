@@ -71,8 +71,20 @@
 }
 
 .title{
+  font-size: 1.2em;
+  padding-top:5px;
+}
+
+.big-title{
   font-weight: bold;
   font-size: 1.4em;
   padding-top:5px;
-  
+}
+
+.address-tit{
+  padding-top: 5px;
+}
+
+.desc-query, .input-tagging{
+  font-size: 0.8em;
 }

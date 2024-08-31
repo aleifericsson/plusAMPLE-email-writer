@@ -3,10 +3,11 @@ import App from './components/App.jsx';
 import { generateRoot, injectReact, removeReact } from "./scripts/ext-qol.js";
 import Popup from "./components/Popup.jsx";
 import './styles/Root.css'
+import { detectTextboxes, popup_pos } from "./scripts/eleDetector.js";
 
 const root = generateRoot()
 render(document.body, root)
-let popup_pos = {x: 300, y: 500}
+
 
 chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
     if (message.message == "toggle_popup"){ //{message, popup_visible}
@@ -19,4 +20,6 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
     }
 });
 
-export {root, popup_pos}
+setInterval(detectTextboxes, 500);
+
+export {root}

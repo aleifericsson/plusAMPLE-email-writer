@@ -24,23 +24,25 @@ export default function GenMenu({back}){ //props: {startx, starty}
 
     return(
         <div>
-            <div className="title">Email Writer</div>
+            <div className="big-title">Email Writer</div>
             <form className="gen-menu" onSubmit={handleSubmit(onSubmit)}>
                 
             <div className='title'>Email Description</div>
                 <input 
-                        type="textarea" 
-                        placeholder="brief description about your email..."
+                        type="textarea"
+                        rows="4" cols="50"
+                        className = "desc-query"
+                        placeholder="brief email description"
                         {...register("description" , { required: "Please write a description." })}
                 />
                 
             <fieldset>
-            <legend>Addressed To:</legend>
+            <legend className = "address-tit">Addressed To:</legend>
                 <div>
                     <input 
                     type="radio" 
                     id="Unknown" 
-                    value="Unknown" 
+                    value="Unknown recipient" 
                     checked={addressVal === "Unknown"}
                     {...register("addressedTo",{ required: "Please select an option." })}
                     onChange={() =>handleRadioChange( "Unknown" )}

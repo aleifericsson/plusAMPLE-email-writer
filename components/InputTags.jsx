@@ -3,7 +3,7 @@ import { TagsInput } from "react-tag-input-component";
 export default function InputTag ({tags, setTags}){
 
   return (
-    <div>
+    <div className="input-tagging">
       <div className="title">Tags</div>
       <TagsInput
         value={tags}
