@@ -1,6 +1,4 @@
 import { useState } from 'react';
-import '../styles/Popup.css'
-
 import { useForm } from 'react-hook-form';
 import InputTag from './InputTags.jsx';
 
@@ -24,7 +22,6 @@ export default function GenMenu({back}){ //props: {startx, starty}
 
     return(
         <div>
-            <div className="big-title">Email Writer</div>
             <form className="gen-menu" onSubmit={handleSubmit(onSubmit)}>
                 
             <div className='title'>Email Description</div>
@@ -32,7 +29,7 @@ export default function GenMenu({back}){ //props: {startx, starty}
                         type="textarea"
                         rows="4" cols="50"
                         className = "desc-query"
-                        placeholder="brief email description"
+                        placeholder="e.g. agree to the proposal..."
                         {...register("description" , { required: "Please write a description." })}
                 />
                 

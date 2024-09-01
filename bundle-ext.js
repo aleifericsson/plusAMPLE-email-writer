@@ -25,7 +25,6 @@ exports["default"] = GenMenu;
 var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
 var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
 var _react = require("react");
-require("../styles/Popup.css");
 var _reactHookForm = require("react-hook-form");
 var _InputTags = _interopRequireDefault(require("./InputTags.jsx"));
 var _jsxRuntime = require("react/jsx-runtime");
@@ -74,11 +73,8 @@ function GenMenu(_ref) {
   var handleRadioChange = function handleRadioChange(value) {
     setAddressVal(value);
   };
-  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-      className: "big-title",
-      children: "Email Writer"
-    }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("form", {
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+    children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("form", {
       className: "gen-menu",
       onSubmit: handleSubmit(onSubmit),
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
@@ -89,7 +85,7 @@ function GenMenu(_ref) {
         rows: "4",
         cols: "50",
         className: "desc-query",
-        placeholder: "brief email description"
+        placeholder: "e.g. agree to the proposal..."
       }, register("description", {
         required: "Please write a description."
       }))), /*#__PURE__*/(0, _jsxRuntime.jsxs)("fieldset", {
@@ -199,11 +195,11 @@ function GenMenu(_ref) {
           children: "Submit"
         })]
       })]
-    })]
+    })
   });
 }
 
-},{"../styles/Popup.css":40,"./InputTags.jsx":3,"@babel/runtime/helpers/defineProperty":9,"@babel/runtime/helpers/interopRequireDefault":10,"@babel/runtime/helpers/slicedToArray":13,"react":30,"react-hook-form":24,"react/jsx-runtime":31}],3:[function(require,module,exports){
+},{"./InputTags.jsx":3,"@babel/runtime/helpers/defineProperty":9,"@babel/runtime/helpers/interopRequireDefault":10,"@babel/runtime/helpers/slicedToArray":13,"react":30,"react-hook-form":24,"react/jsx-runtime":31}],3:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -241,6 +237,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports["default"] = Popup;
+var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
+var _react = require("react");
 var _extQol = require("../scripts/ext-qol");
 require("../styles/Popup.css");
 var _PopupContent = _interopRequireDefault(require("./PopupContent.jsx"));
@@ -251,14 +249,36 @@ function Popup(_ref) {
   var props = _ref.props;
   //props: {startx, starty}
 
+  var _useState = (0, _react.useState)(props.startx),
+    _useState2 = (0, _slicedToArray2["default"])(_useState, 2),
+    x = _useState2[0],
+    setX = _useState2[1];
+  var _useState3 = (0, _react.useState)(props.starty),
+    _useState4 = (0, _slicedToArray2["default"])(_useState3, 2),
+    y = _useState4[0],
+    setY = _useState4[1];
+  var _useState5 = (0, _react.useState)("popup"),
+    _useState6 = (0, _slicedToArray2["default"])(_useState5, 2),
+    classes = _useState6[0],
+    setClasses = _useState6[1];
   var closePopup = function closePopup() {
     (0, _extQol.removeReact)();
   };
+  var setPos = function setPos(x, y) {
+    setX(x);
+    setY(y);
+  };
+  var getPos = function getPos() {
+    return {
+      x: x,
+      y: y
+    };
+  };
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-    className: "popup",
+    className: classes,
     style: {
-      left: props.startx,
-      top: props.starty
+      left: x,
+      top: y
     },
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
       className: "top-bar",
@@ -269,12 +289,16 @@ function Popup(_ref) {
       })
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
       className: "popup-content",
-      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_PopupContent["default"], {})
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_PopupContent["default"], {
+        setPos: setPos,
+        getPos: getPos,
+        setClasses: setClasses
+      })
     })]
   });
 }
 
-},{"../scripts/ext-qol":37,"../styles/Popup.css":40,"./PopupContent.jsx":5,"@babel/runtime/helpers/interopRequireDefault":10,"react/jsx-runtime":31}],5:[function(require,module,exports){
+},{"../scripts/ext-qol":37,"../styles/Popup.css":40,"./PopupContent.jsx":5,"@babel/runtime/helpers/interopRequireDefault":10,"@babel/runtime/helpers/slicedToArray":13,"react":30,"react/jsx-runtime":31}],5:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -286,12 +310,22 @@ var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/sli
 var _react = require("react");
 var _GenMenu = _interopRequireDefault(require("./GenMenu.jsx"));
 var _jsxRuntime = require("react/jsx-runtime");
-function PopupContent() {
+function PopupContent(_ref) {
+  var setPos = _ref.setPos,
+    getPos = _ref.getPos,
+    setClasses = _ref.setClasses;
   var _useState = (0, _react.useState)("default"),
     _useState2 = (0, _slicedToArray2["default"])(_useState, 2),
     content = _useState2[0],
     setContent = _useState2[1];
   var openGenMenu = function openGenMenu() {
+    var pos = getPos();
+    if (pos.y < 300) {
+      setClasses("popup top poop");
+      setPos(pos.x, pos.y + 20 + 10);
+    } else if (pos.y < 450) {
+      //setPos(pos.x, pos.y + 20 + 10 + 150)
+    }
     setContent("generate");
   };
   var goBack = function goBack() {
@@ -35983,6 +36017,10 @@ var offPopup = function offPopup() {
 };
 var showPopup = function showPopup(e) {
   exports.popup_pos = popup_pos = (0, _qol.getElePos)(e.target);
+  if (popup_pos.x < 150) {
+    popup_pos.x = 150;
+  }
+  popup_pos.y -= 20;
   (0, _extQol.injectReact)(_Popup["default"], _mainExt.root, {
     startx: popup_pos.x,
     starty: popup_pos.y
@@ -36194,7 +36232,7 @@ var checkCollisionReal = function checkCollisionReal(thing1, thing2) {
 },{}],39:[function(require,module,exports){
 var css = ".bruh {\n  color: white;\n  font-size: 50px;\n}\n"; (require("browserify-css").createStyle(css, { "href": "styles\\App.css" }, { "insertAt": "bottom" })); module.exports = css;
 },{"browserify-css":18}],40:[function(require,module,exports){
-var css = ".popup {\n  position: absolute;\n  transform: translate(-50%,-100%);\n  font-size: 1em;\n  margin: 1em 0 3em;\n  color: #000;\n  background: #c7c7c7;\n  -webkit-border-radius: 10px;\n  -moz-border-radius: 10px;\n  border-radius: 10px;\n}\n.popup:after {\n  content: \"\";\n  position: absolute;\n  bottom: -10px;\n  /* value = - border-top-width - border-bottom-width */\n  left: 50%;\n  /* controls horizontal position */\n  transform: translate(-50%,0);\n  border-width: 10px 10px 0;\n  /* vary these values to change the angle of the vertex */\n  border-style: solid;\n  border-color: #c7c7c7 transparent;\n  /* reduce the damage in FF3.0 */\n  display: block;\n  width: 0;\n}\n.popup.top {\n  background: #c7c7c7;\n}\n.popup.top:after {\n  top: -10px;\n  /* value = - border-top-width - border-bottom-width */\n  left: 50%;\n  /* controls horizontal position */\n  transform: translate(-50%,0);\n  bottom: auto;\n  left: auto;\n  border-width: 0 10px 10px;\n  /* vary these values to change the angle of the vertex */\n  border-color: #c7c7c7 transparent;\n}\n.close-icon {\n  background-size: contain;\n  height: 0.6em;\n  width: 0.6em;\n}\n.top-bar {\n  display: flex;\n  justify-content: end;\n  background: #9c9c9c;\n  padding: 2px;\n  border-top-left-radius: 10px;\n  border-top-right-radius: 10px;\n  padding-right: 5px;\n}\n.popup-content {\n  padding: 10px;\n  padding-top: 5px;\n}\n.bottom-bar {\n  display: flex;\n  justify-content: space-between;\n  padding: 5px;\n}\n.info {\n  font-size: 0.6em;\n}\n.title {\n  font-size: 1.2em;\n  padding-top: 5px;\n}\n.big-title {\n  font-weight: bold;\n  font-size: 1.4em;\n  padding-top: 5px;\n}\n.address-tit {\n  padding-top: 5px;\n}\n.desc-query,\n.input-tagging {\n  font-size: 0.8em;\n}\n"; (require("browserify-css").createStyle(css, { "href": "styles\\Popup.css" }, { "insertAt": "bottom" })); module.exports = css;
+var css = ".popup {\n  position: absolute;\n  transform: translate(-50%,-100%);\n  font-size: 1em;\n  margin: 1em 0 3em;\n  color: #000;\n  background: #c7c7c7;\n  -webkit-border-radius: 10px;\n  -moz-border-radius: 10px;\n  border-radius: 10px;\n}\n.popup:after {\n  content: \"\";\n  position: absolute;\n  bottom: -10px;\n  /* value = - border-top-width - border-bottom-width */\n  left: 50%;\n  /* controls horizontal position */\n  transform: translate(-50%,0);\n  border-width: 10px 10px 0;\n  /* vary these values to change the angle of the vertex */\n  border-style: solid;\n  border-color: #c7c7c7 transparent;\n  /* reduce the damage in FF3.0 */\n  display: block;\n  width: 0;\n}\n.popup.top {\n  background: #c7c7c7;\n  transform: translate(-50%,0%);\n}\n.popup.top.poop:after {\n  position: absolute;\n  top: -10px;\n  /* value = - border-top-width - border-bottom-width */\n  left: 50%;\n  /* controls horizontal position */\n  bottom: auto;\n  border-width: 0 10px 10px;\n  /* vary these values to change the angle of the vertex */\n  border-color: #c7c7c7 transparent;\n  display: block;\n}\n.close-icon {\n  background-size: contain;\n  height: 0.6em;\n  width: 0.6em;\n}\n.top-bar {\n  display: flex;\n  justify-content: end;\n  background: #9c9c9c;\n  padding: 2px;\n  border-top-left-radius: 10px;\n  border-top-right-radius: 10px;\n  padding-right: 5px;\n}\n.popup-content {\n  padding: 10px;\n  padding-top: 5px;\n}\n.bottom-bar {\n  display: flex;\n  justify-content: space-between;\n  padding: 5px;\n}\n.info {\n  font-size: 0.6em;\n}\n.title {\n  font-size: 1.2em;\n  padding-top: 5px;\n}\n.big-title {\n  font-weight: bold;\n  font-size: 1.4em;\n  padding-top: 5px;\n}\n.address-tit {\n  padding-top: 5px;\n}\n.desc-query,\n.input-tagging {\n  font-size: 0.8em;\n}\nfieldset {\n  font-size: 0.8em;\n}\n"; (require("browserify-css").createStyle(css, { "href": "styles\\Popup.css" }, { "insertAt": "bottom" })); module.exports = css;
 },{"browserify-css":18}],41:[function(require,module,exports){
 var css = ".react-root {\n  position: absolute;\n  width: 100vw;\n  position: 100vh;\n  top: 0px;\n  left: 0px;\n  z-index: 100000;\n}\n/*\r\ndiv.react-root.plus-ample * {\r\n    color:black;\r\n    padding:0px;\r\n    width:auto;\r\n    height:auto;\r\n}\r\n*/\n#settings-react-root {\n  color: black;\n}\n"; (require("browserify-css").createStyle(css, { "href": "styles\\Root.css" }, { "insertAt": "bottom" })); module.exports = css;
 },{"browserify-css":18}]},{},[6]);

@@ -31,6 +31,10 @@ const offPopup = () =>{
 
 const showPopup = (e) => {
     popup_pos = getElePos(e.target)
+    if (popup_pos.x < 150){
+        popup_pos.x = 150
+    }
+    popup_pos.y -= 20
     injectReact(Popup, root,{startx:popup_pos.x,starty:popup_pos.y})
     setTimeout( () => {
         popup = find(".popup")

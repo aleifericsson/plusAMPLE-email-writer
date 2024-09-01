@@ -25,18 +25,19 @@
   }
   
 .popup.top {
-    background: #c7c7c7
+    background: #c7c7c7;
+    transform: translate(-50%,0%);
   }
 
   
-.popup.top:after {
+.popup.top.poop:after {
+    position:absolute;
     top:-10px; /* value = - border-top-width - border-bottom-width */
     left:50%; /* controls horizontal position */
-    transform: translate(-50%,0);
     bottom:auto;
-    left:auto;
     border-width:0 10px 10px; /* vary these values to change the angle of the vertex */
     border-color:#c7c7c7 transparent;
+    display:block;
   }
 
 .close-icon{
@@ -87,4 +88,8 @@
 
 .desc-query, .input-tagging{
   font-size: 0.8em;
+}
+
+fieldset {
+  font-size:0.8em;
 }
