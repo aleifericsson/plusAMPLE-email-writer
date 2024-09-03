@@ -7,6 +7,7 @@ let textbox_list = []
 let popup_pos = {x: 300, y: 500}
 let overPopup = false
 let popup = null
+let focused_textbox = null
 
 const detectTextboxes = () =>{
     const textboxes = document.querySelectorAll('[contenteditable="true"]');
@@ -17,6 +18,15 @@ const detectTextboxes = () =>{
             textbox.addEventListener("blur", removePopup)
         }
     })
+}
+
+const undetectTextboxes = () =>{
+    textbox_list.forEach((textbox)=>{   
+            textbox.removeEventListener("focus", showPopup)
+            textbox.removeEventListener("blur", removePopup)
+    })
+    textbox_list = []
+    focused_textbox = null
 }
 
 const onPopup = () =>{
@@ -30,6 +40,7 @@ const offPopup = () =>{
 }
 
 const showPopup = (e) => {
+    focused_textbox = e.target
     popup_pos = getElePos(e.target)
     if (popup_pos.x < 150){
         popup_pos.x = 150
@@ -63,4 +74,4 @@ window.addEventListener('click', function(e){
     } 
   });
 
-export {textbox_list, detectTextboxes, popup_pos}
+export {focused_textbox, detectTextboxes, popup_pos, undetectTextboxes}

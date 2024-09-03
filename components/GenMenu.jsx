@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import InputTag from './InputTags.jsx';
+import { focused_textbox } from '../scripts/eleDetector.js';
+import { write } from '../scripts/qol.js';
+import { removeReact } from '../scripts/ext-qol.js';
 
 export default function GenMenu({back}){ //props: {startx, starty}
 
@@ -8,12 +11,14 @@ export default function GenMenu({back}){ //props: {startx, starty}
     const [tags, setTags] = useState(["formal"]);
     const [ addressVal, setAddressVal] = useState("Unknown");
 
-
     // Define the onSubmit handler
     const onSubmit = (data) => {
-        alert(`Form submitted with addressed to: ${data.addressedTo} ${data.theName}`);
+        const prompt = `Write an email to the recipient: ${data.addressedTo} ${data.theName ? data.theName : ""},
+        regarding the description: ${data.description},
+        with the tags: ${tags.toString()}`
+        write(focused_textbox, prompt)
+        removeReact()
     };
-
     
     const handleRadioChange = (value) => {
         setAddressVal(value);
@@ -103,7 +108,9 @@ export default function GenMenu({back}){ //props: {startx, starty}
 
                 <InputTag tags={tags} setTags={setTags}/>
 
-                {errors.addressedTo && <p>{errors.addressedTo.message}</p>}
+                {errors.description && <div className='error'>{errors.description.message}</div>}
+                {errors.addressedTo && <div className='error'>{errors.addressedTo.message}</div>}
+                {errors.theName && <div className='error'>{errors.theName.message}</div>}
                 
                 <div className='bottom-bar'>
                     <button onClick={back}>Back</button>

@@ -93,3 +93,9 @@
 fieldset {
   font-size:0.8em;
 }
+
+.error{
+  font-size: 0.7em;
+  padding: 0px;
+  color: rgb(255, 122, 122);
+}

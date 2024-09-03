@@ -3,23 +3,38 @@ import App from './components/App.jsx';
 import { generateRoot, injectReact, removeReact } from "./scripts/ext-qol.js";
 import Popup from "./components/Popup.jsx";
 import './styles/Root.css'
-import { detectTextboxes, popup_pos } from "./scripts/eleDetector.js";
+import { detectTextboxes, popup_pos, undetectTextboxes } from "./scripts/eleDetector.js";
+import Cookies from "js-cookie";
 
 const root = generateRoot()
 render(document.body, root)
-
+let intervalID
+if (Cookies.get("scanning")){
+    if(Cookies.get("scanning") === "true"){
+        intervalID = setInterval(detectTextboxes, 500)
+    }
+}
+else{
+    intervalID = setInterval(detectTextboxes, 500)
+}
 
 chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
-    if (message.message == "toggle_popup"){ //{message, popup_visible}
-        if(message.popup_visible){
-            injectReact(Popup, root,{startx:popup_pos.x,starty:popup_pos.y})
+    if (message.message == "toggle_scanning"){ //{message, scanning}
+        if(message.scanning){
+            if (intervalID){
+                clearInterval(intervalID)
+            }
+            intervalID = setInterval(detectTextboxes, 500)
+            Cookies.set("scanning", "true")
         }
         else{
+            clearInterval(intervalID)
+            intervalID = null
             removeReact()
+            undetectTextboxes()
+            Cookies.set("scanning", "false")
         }
     }
 });
-
-setInterval(detectTextboxes, 500);
 
 export {root}
