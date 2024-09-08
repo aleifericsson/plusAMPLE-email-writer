@@ -71,7 +71,7 @@ function GenMenu(_ref) {
 
   // Define the onSubmit handler
   var onSubmit = function onSubmit(data) {
-    var prompt = "Write an email to the recipient: ".concat(data.addressedTo, " ").concat(data.theName ? data.theName : "", ",\n        regarding the description: ").concat(data.description, ",\n        with the tags: ").concat(tags.toString());
+    var prompt = "Write an email to the recipient: ".concat(data.addressedTo, " ").concat(data.theName ? data.theName : "", ",\n        regarding the description: ").concat(data.description, ",\n        with the tags: ").concat(tags.toString(), ",\n        consisting of ").concat(words, " words");
     (0, _qol.write)(_eleDetector.focused_textbox, prompt);
     (0, _extQol.removeReact)();
   };
@@ -84,110 +84,150 @@ function GenMenu(_ref) {
       onSubmit: handleSubmit(onSubmit),
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
         className: "title",
-        children: "Email Description"
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("input", _objectSpread({
-        type: "textarea",
-        rows: "4",
-        cols: "50",
-        className: "desc-query",
-        placeholder: "e.g. agree to the proposal..."
-      }, register("description", {
-        required: "Please write a description."
-      }))), /*#__PURE__*/(0, _jsxRuntime.jsxs)("fieldset", {
+        children: "Generate Email"
+      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+        className: "length-sel",
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("label", {
+          htmlFor: "description",
+          className: "form_label",
+          children: "Enter Description:"
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("input", _objectSpread({
+          type: "textarea",
+          rows: "4",
+          cols: "50",
+          className: "desc-query",
+          name: "description",
+          placeholder: "e.g. agree to the proposal..."
+        }, register("description", {
+          required: "Please write a description."
+        })))]
+      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+        className: "length-sel",
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("label", {
+          htmlFor: "length",
+          className: "form_label",
+          children: "Select length:"
+        }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("select", _objectSpread(_objectSpread({
+          name: "length"
+        }, register("length", {
+          required: "select an email length"
+        })), {}, {
+          children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("option", {
+            value: "50",
+            children: "Short"
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)("option", {
+            value: "100",
+            selected: true,
+            children: "Medium"
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)("option", {
+            value: "150",
+            children: "Long"
+          })]
+        }))]
+      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("fieldset", {
         children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("legend", {
           className: "address-tit",
           children: "Addressed To:"
         }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-          children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("input", _objectSpread(_objectSpread({
-            type: "radio",
-            id: "Unknown",
-            value: "Unknown recipient",
-            checked: addressVal === "Unknown"
-          }, register("addressedTo", {
-            required: "Please select an option."
-          })), {}, {
-            onChange: function onChange() {
-              return handleRadioChange("Unknown");
-            }
-          })), /*#__PURE__*/(0, _jsxRuntime.jsx)("label", {
-            htmlFor: "Unknown",
-            children: "Unknown"
+          className: "addresses",
+          children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+            children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("input", _objectSpread(_objectSpread({
+              type: "radio",
+              id: "Unknown",
+              value: "Unknown recipient",
+              checked: addressVal === "Unknown"
+            }, register("addressedTo", {
+              required: "Please select a title."
+            })), {}, {
+              onChange: function onChange() {
+                return handleRadioChange("Unknown");
+              }
+            })), /*#__PURE__*/(0, _jsxRuntime.jsx)("label", {
+              htmlFor: "Unknown",
+              children: "Unknown"
+            })]
+          }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+            children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("input", _objectSpread(_objectSpread({
+              type: "radio",
+              id: "Mr.",
+              value: "Mr.",
+              checked: addressVal === "Mr"
+            }, register("addressedTo", {
+              required: "Please select a title."
+            })), {}, {
+              onChange: function onChange() {
+                return handleRadioChange("Mr");
+              }
+            })), /*#__PURE__*/(0, _jsxRuntime.jsx)("label", {
+              htmlFor: "Mr",
+              children: "Mr."
+            })]
           })]
         }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-          children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("input", _objectSpread(_objectSpread({
-            type: "radio",
-            id: "Mr.",
-            value: "Mr.",
-            checked: addressVal === "Mr"
-          }, register("addressedTo", {
-            required: "Please select an option."
-          })), {}, {
-            onChange: function onChange() {
-              return handleRadioChange("Mr");
-            }
-          })), /*#__PURE__*/(0, _jsxRuntime.jsx)("label", {
-            htmlFor: "Mr",
-            children: "Mr."
+          className: "addresses",
+          children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+            children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("input", _objectSpread(_objectSpread({
+              type: "radio",
+              id: "Ms.",
+              value: "Ms.",
+              checked: addressVal === "Ms"
+            }, register("addressedTo", {
+              required: "Please select a title."
+            })), {}, {
+              onChange: function onChange() {
+                return handleRadioChange("Ms");
+              }
+            })), /*#__PURE__*/(0, _jsxRuntime.jsx)("label", {
+              htmlFor: "Ms",
+              children: "Ms."
+            })]
+          }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+            children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("input", _objectSpread(_objectSpread({
+              type: "radio",
+              id: "Mrs.",
+              value: "Mrs.",
+              checked: addressVal === "Mrs"
+            }, register("addressedTo", {
+              required: "Please select a title."
+            })), {}, {
+              onChange: function onChange() {
+                return handleRadioChange("Mrs");
+              }
+            })), /*#__PURE__*/(0, _jsxRuntime.jsx)("label", {
+              htmlFor: "Mrs",
+              children: "Mrs."
+            })]
+          }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+            children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("input", _objectSpread(_objectSpread({
+              type: "radio",
+              id: "no-title",
+              value: "",
+              checked: addressVal === "no-title"
+            }, register("addressedTo", {
+              required: "Please select a title."
+            })), {}, {
+              onChange: function onChange() {
+                return handleRadioChange("no-title");
+              }
+            })), /*#__PURE__*/(0, _jsxRuntime.jsx)("label", {
+              htmlFor: "no-title",
+              children: "No Title"
+            })]
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+            children: addressVal !== "Unknown" && /*#__PURE__*/(0, _jsxRuntime.jsx)("input", _objectSpread({
+              type: "text",
+              placeholder: "Name"
+            }, register("theName", {
+              required: "Please write a name."
+            })))
           })]
-        }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-          children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("input", _objectSpread(_objectSpread({
-            type: "radio",
-            id: "Ms.",
-            value: "Ms.",
-            checked: addressVal === "Ms"
-          }, register("addressedTo", {
-            required: "Please select an option."
-          })), {}, {
-            onChange: function onChange() {
-              return handleRadioChange("Ms");
-            }
-          })), /*#__PURE__*/(0, _jsxRuntime.jsx)("label", {
-            htmlFor: "Ms",
-            children: "Ms."
-          })]
-        }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-          children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("input", _objectSpread(_objectSpread({
-            type: "radio",
-            id: "Mrs.",
-            value: "Mrs.",
-            checked: addressVal === "Mrs"
-          }, register("addressedTo", {
-            required: "Please select an option."
-          })), {}, {
-            onChange: function onChange() {
-              return handleRadioChange("Mrs");
-            }
-          })), /*#__PURE__*/(0, _jsxRuntime.jsx)("label", {
-            htmlFor: "Mrs",
-            children: "Mrs."
-          })]
-        }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-          children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("input", _objectSpread(_objectSpread({
-            type: "radio",
-            id: "no-title",
-            value: "",
-            checked: addressVal === "no-title"
-          }, register("addressedTo", {
-            required: "Please select an option."
-          })), {}, {
-            onChange: function onChange() {
-              return handleRadioChange("no-title");
-            }
-          })), /*#__PURE__*/(0, _jsxRuntime.jsx)("label", {
-            htmlFor: "no-title",
-            children: "No Title"
-          })]
-        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-          children: addressVal !== "Unknown" && /*#__PURE__*/(0, _jsxRuntime.jsx)("input", _objectSpread({
-            type: "text",
-            placeholder: "Name"
-          }, register("theName", {
-            required: "Please write a name."
-          })))
         })]
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_InputTags["default"], {
         tags: tags,
         setTags: setTags
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("i", {
+        className: "info",
+        children: "press enter or comma to add new tag"
       }), errors.description && /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
         className: "error",
         children: errors.description.message
@@ -197,6 +237,9 @@ function GenMenu(_ref) {
       }), errors.theName && /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
         className: "error",
         children: errors.theName.message
+      }), errors.length && /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+        className: "error",
+        children: [" ", errors.length.message]
       }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
         className: "bottom-bar",
         children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
@@ -226,16 +269,12 @@ function InputTag(_ref) {
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     className: "input-tagging",
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-      className: "title",
-      children: "Tags"
+      children: "Tags:"
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactTagInputComponent.TagsInput, {
       value: tags,
       onChange: setTags,
       name: "email-tags",
       placeHolder: "enter tags"
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("i", {
-      className: "info",
-      children: "press enter or comma to add new tag"
     })]
   });
 }
@@ -36416,7 +36455,7 @@ var checkCollisionReal = function checkCollisionReal(thing1, thing2) {
 },{}],40:[function(require,module,exports){
 var css = ".bruh {\n  color: white;\n  font-size: 50px;\n}\n"; (require("browserify-css").createStyle(css, { "href": "styles\\App.css" }, { "insertAt": "bottom" })); module.exports = css;
 },{"browserify-css":18}],41:[function(require,module,exports){
-var css = ".popup {\n  position: absolute;\n  transform: translate(-50%,-100%);\n  font-size: 1em;\n  margin: 1em 0 3em;\n  color: #000;\n  background: #c7c7c7;\n  -webkit-border-radius: 10px;\n  -moz-border-radius: 10px;\n  border-radius: 10px;\n}\n.popup:after {\n  content: \"\";\n  position: absolute;\n  bottom: -10px;\n  /* value = - border-top-width - border-bottom-width */\n  left: 50%;\n  /* controls horizontal position */\n  transform: translate(-50%,0);\n  border-width: 10px 10px 0;\n  /* vary these values to change the angle of the vertex */\n  border-style: solid;\n  border-color: #c7c7c7 transparent;\n  /* reduce the damage in FF3.0 */\n  display: block;\n  width: 0;\n}\n.popup.top {\n  background: #c7c7c7;\n  transform: translate(-50%,0%);\n}\n.popup.top.poop:after {\n  position: absolute;\n  top: -10px;\n  /* value = - border-top-width - border-bottom-width */\n  left: 50%;\n  /* controls horizontal position */\n  bottom: auto;\n  border-width: 0 10px 10px;\n  /* vary these values to change the angle of the vertex */\n  border-color: #c7c7c7 transparent;\n  display: block;\n}\n.close-icon {\n  background-size: contain;\n  height: 0.6em;\n  width: 0.6em;\n}\n.top-bar {\n  display: flex;\n  justify-content: end;\n  background: #9c9c9c;\n  padding: 2px;\n  border-top-left-radius: 10px;\n  border-top-right-radius: 10px;\n  padding-right: 5px;\n}\n.popup-content {\n  padding: 10px;\n  padding-top: 5px;\n}\n.bottom-bar {\n  display: flex;\n  justify-content: space-between;\n  padding: 5px;\n}\n.info {\n  font-size: 0.6em;\n}\n.title {\n  font-size: 1.2em;\n  padding-top: 5px;\n}\n.big-title {\n  font-weight: bold;\n  font-size: 1.4em;\n  padding-top: 5px;\n}\n.address-tit {\n  padding-top: 5px;\n}\n.desc-query,\n.input-tagging {\n  font-size: 0.8em;\n}\nfieldset {\n  font-size: 0.8em;\n}\n.error {\n  font-size: 0.7em;\n  padding: 0px;\n  color: rgb(255, 122, 122);\n}\n"; (require("browserify-css").createStyle(css, { "href": "styles\\Popup.css" }, { "insertAt": "bottom" })); module.exports = css;
+var css = ".popup {\n  position: absolute;\n  transform: translate(-50%,-100%);\n  font-size: 1em;\n  margin: 1em 0 3em;\n  color: #000;\n  background: #c7c7c7;\n  -webkit-border-radius: 10px;\n  -moz-border-radius: 10px;\n  border-radius: 10px;\n}\n.popup:after {\n  content: \"\";\n  position: absolute;\n  bottom: -10px;\n  /* value = - border-top-width - border-bottom-width */\n  left: 50%;\n  /* controls horizontal position */\n  transform: translate(-50%,0);\n  border-width: 10px 10px 0;\n  /* vary these values to change the angle of the vertex */\n  border-style: solid;\n  border-color: #c7c7c7 transparent;\n  /* reduce the damage in FF3.0 */\n  display: block;\n  width: 0;\n}\n.popup.top {\n  background: #c7c7c7;\n  transform: translate(-50%,0%);\n}\n.popup.top.poop:after {\n  position: absolute;\n  top: -10px;\n  /* value = - border-top-width - border-bottom-width */\n  left: 50%;\n  /* controls horizontal position */\n  bottom: auto;\n  border-width: 0 10px 10px;\n  /* vary these values to change the angle of the vertex */\n  border-color: #c7c7c7 transparent;\n  display: block;\n}\n.close-icon {\n  background-size: contain;\n  height: 0.6em;\n  width: 0.6em;\n}\n.top-bar {\n  display: flex;\n  justify-content: end;\n  background: #9c9c9c;\n  padding: 2px;\n  border-top-left-radius: 10px;\n  border-top-right-radius: 10px;\n  padding-right: 5px;\n}\n.popup-content {\n  padding: 10px;\n  padding-top: 5px;\n}\n.bottom-bar {\n  display: flex;\n  justify-content: space-between;\n  padding: 5px;\n}\n.info {\n  font-size: 0.6em;\n}\n.title {\n  font-size: 1.2em;\n  padding-top: 5px;\n}\n.big-title {\n  font-weight: bold;\n  font-size: 1.4em;\n  padding-top: 5px;\n}\n.address-tit {\n  padding-top: 5px;\n}\n.desc-query,\n.input-tagging {\n  font-size: 0.8em;\n}\nfieldset {\n  font-size: 0.8em;\n}\n.error {\n  font-size: 0.7em;\n  padding: 0px;\n  color: rgb(255, 122, 122);\n}\n.length-sel {\n  font-size: 0.8em;\n  display: flex;\n  justify-content: left;\n  gap: 20px;\n  align-items: center;\n  padding: 2px;\n}\n.input-tagging {\n  display: flex;\n  justify-content: space-between;\n  gap: 10px;\n  align-items: center;\n  font-size: 0.8em;\n  padding: 2px;\n}\n.addresses {\n  display: flex;\n  justify-content: left;\n  gap: 10px;\n  align-items: center;\n  padding: 2px;\n}\n"; (require("browserify-css").createStyle(css, { "href": "styles\\Popup.css" }, { "insertAt": "bottom" })); module.exports = css;
 },{"browserify-css":18}],42:[function(require,module,exports){
 var css = ".react-root {\n  position: absolute;\n  width: 100vw;\n  position: 100vh;\n  top: 0px;\n  left: 0px;\n  z-index: 100000;\n}\n/*\r\ndiv.react-root.plus-ample * {\r\n    color:black;\r\n    padding:0px;\r\n    width:auto;\r\n    height:auto;\r\n}\r\n*/\n#settings-react-root {\n  color: black;\n  width: 200px;\n}\n"; (require("browserify-css").createStyle(css, { "href": "styles\\Root.css" }, { "insertAt": "bottom" })); module.exports = css;
 },{"browserify-css":18}]},{},[6]);

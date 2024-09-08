@@ -15,7 +15,7 @@ export default function Settings({init_scanning}){
     return(
         <>
             <div className="settings-header">
-                <img className="logo" src={ chrome.runtime.getURL('images/plus_a.png')}></img>
+                <img className="logo" src={ chrome.runtime.getURL('images/plusAmple-white.png')}></img>
                 <span className="settings-title">Settings</span>
             </div>
             <div className="toggle-box">
