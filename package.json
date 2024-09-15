@@ -17,6 +17,7 @@
     "description": "",
     "dependencies": {
         "@babel/core": "^7.24.9",
+        "@google/generative-ai": "^0.19.0",
         "js-cookie": "^3.0.5",
         "js-cookies": "^1.0.4",
         "react": "^18.3.1",

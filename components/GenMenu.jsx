@@ -4,6 +4,7 @@ import InputTag from './InputTags.jsx';
 import { focused_textbox } from '../scripts/eleDetector.js';
 import { write } from '../scripts/qol.js';
 import { removeReact } from '../scripts/ext-qol.js';
+import { generateEmail } from '../scripts/gemini.js';
 
 export default function GenMenu({back}){ //props: {startx, starty}
 
@@ -13,11 +14,8 @@ export default function GenMenu({back}){ //props: {startx, starty}
 
     // Define the onSubmit handler
     const onSubmit = (data) => {
-        const prompt = `Write an email to the recipient: ${data.addressedTo} ${data.theName ? data.theName : ""},
-        regarding the description: ${data.description},
-        with the tags: ${tags.toString()},
-        consisting of ${words} words`
-        write(focused_textbox, prompt)
+        const email = generateEmail(data.addressedTo,data.theName,data.description,data.length)
+        write(focused_textbox, email)
         removeReact()
     };
     

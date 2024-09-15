@@ -31,12 +31,10 @@ const undetectTextboxes = () =>{
 
 const onPopup = () =>{
     overPopup = true
-    console.log(overPopup)
 }
 
 const offPopup = () =>{
     overPopup = false
-    console.log(overPopup)
 }
 
 const showPopup = (e) => {
@@ -55,7 +53,6 @@ const showPopup = (e) => {
 }
 
 const removePopup = (e) => {
-    console.log(e.relatedTarget)
     if (overPopup){
 
     }

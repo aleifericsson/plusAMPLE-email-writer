@@ -71,7 +71,7 @@ function GenMenu(_ref) {
 
   // Define the onSubmit handler
   var onSubmit = function onSubmit(data) {
-    var prompt = "Write an email to the recipient: ".concat(data.addressedTo, " ").concat(data.theName ? data.theName : "", ",\n        regarding the description: ").concat(data.description, ",\n        with the tags: ").concat(tags.toString(), ",\n        consisting of ").concat(words, " words");
+    var prompt = "Write an email to the recipient: ".concat(data.addressedTo, " ").concat(data.theName ? data.theName : "", ",\n        regarding the description: ").concat(data.description, ",\n        with the tags: ").concat(tags.toString(), ",\n        consisting of ").concat(data.length, " words");
     (0, _qol.write)(_eleDetector.focused_textbox, prompt);
     (0, _extQol.removeReact)();
   };
@@ -36311,11 +36311,9 @@ var undetectTextboxes = exports.undetectTextboxes = function undetectTextboxes()
 };
 var onPopup = function onPopup() {
   overPopup = true;
-  console.log(overPopup);
 };
 var offPopup = function offPopup() {
   overPopup = false;
-  console.log(overPopup);
 };
 var showPopup = function showPopup(e) {
   exports.focused_textbox = focused_textbox = e.target;
@@ -36335,7 +36333,6 @@ var showPopup = function showPopup(e) {
   }, 100);
 };
 var removePopup = function removePopup(e) {
-  console.log(e.relatedTarget);
   if (overPopup) {} else {
     (0, _extQol.removeReact)();
     popup = null;
@@ -36381,8 +36378,6 @@ function removeReact() {
   if (root_render) {
     root_render.unmount();
     root_render = null;
-  } else {
-    console.log("you stupid");
   }
 }
 function sendMessage(message) {

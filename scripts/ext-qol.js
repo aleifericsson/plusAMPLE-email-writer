@@ -20,9 +20,6 @@ function removeReact(){
     root_render.unmount()
     root_render = null
   }
-  else{
-    console.log("you stupid")
-  }
 }
 
 function sendMessage(message){
