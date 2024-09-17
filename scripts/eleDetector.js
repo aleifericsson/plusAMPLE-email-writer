@@ -8,6 +8,7 @@ let popup_pos = {x: 300, y: 500}
 let overPopup = false
 let popup = null
 let focused_textbox = null
+let cooldown = false
 
 const detectTextboxes = () =>{
     const textboxes = document.querySelectorAll('[contenteditable="true"]');
@@ -38,18 +39,20 @@ const offPopup = () =>{
 }
 
 const showPopup = (e) => {
-    focused_textbox = e.target
-    popup_pos = getElePos(e.target)
-    if (popup_pos.x < 150){
-        popup_pos.x = 150
+    if (cooldown === false) {
+        focused_textbox = e.target
+        popup_pos = getElePos(e.target)
+        if (popup_pos.x < 150){
+            popup_pos.x = 150
+        }
+        popup_pos.y -= 20
+        injectReact(Popup, root,{startx:popup_pos.x,starty:popup_pos.y})
+        setTimeout( () => {
+            popup = find(".popup")
+            popup.addEventListener("mouseover", onPopup)
+            popup.addEventListener("mouseout", offPopup)
+        }, 100)
     }
-    popup_pos.y -= 20
-    injectReact(Popup, root,{startx:popup_pos.x,starty:popup_pos.y})
-    setTimeout( () => {
-        popup = find(".popup")
-        popup.addEventListener("mouseover", onPopup)
-        popup.addEventListener("mouseout", offPopup)
-    }, 100)
 }
 
 const removePopup = (e) => {
@@ -62,6 +65,13 @@ const removePopup = (e) => {
     }
 }
 
+const startCooldown = (ms) =>{
+    cooldown = true
+    setTimeout( () => {
+        cooldown = false
+    }, ms)
+}
+
 window.addEventListener('click', function(e){  
     if(popup){
         if (!overPopup){
@@ -71,4 +81,4 @@ window.addEventListener('click', function(e){
     } 
   });
 
-export {focused_textbox, detectTextboxes, popup_pos, undetectTextboxes}
+export {focused_textbox, detectTextboxes, popup_pos, undetectTextboxes, startCooldown}

@@ -13,8 +13,9 @@ export default function GenMenu({back}){ //props: {startx, starty}
     const [ addressVal, setAddressVal] = useState("Unknown");
 
     // Define the onSubmit handler
-    const onSubmit = (data) => {
-        const email = generateEmail(data.addressedTo,data.theName,data.description,data.length)
+    const onSubmit = async (data) => {
+        const email = await generateEmail(data.addressedTo,data.theName,data.description,tags.toString(),data.length, data.fromName)
+        focused_textbox.style.whiteSpace = "pre-line"
         write(focused_textbox, email)
         removeReact()
     };
@@ -31,6 +32,19 @@ export default function GenMenu({back}){ //props: {startx, starty}
             <div className='title'>Generate Email</div>
             
             
+            <div className='length-sel'>
+            <label htmlFor="fromName" className="form_label">
+                    Name:
+                </label>
+                <input 
+                        type="textarea"
+                        rows="4" cols="50"
+                        className = "desc-query"
+                        name="fromName"
+                        placeholder="(used in signature)"
+                        {...register("fromName" , { required: "Please write a name." })}
+                />
+            </div>
             <div className='length-sel'>
             <label htmlFor="description" className="form_label">
                     Enter Description:
@@ -82,8 +96,6 @@ export default function GenMenu({back}){ //props: {startx, starty}
                     />
                     <label htmlFor="Mr">Mr.</label>
                 </div>
-                </div>
-                <div className='addresses'>
                 <div>
                     <input 
                     type="radio" 
@@ -130,7 +142,6 @@ export default function GenMenu({back}){ //props: {startx, starty}
                 </fieldset>
 
                 <InputTag tags={tags} setTags={setTags}/>
-                <i className="info">press enter or comma to add new tag</i>
 
                 {errors.description && <div className='error'>{errors.description.message}</div>}
                 {errors.addressedTo && <div className='error'>{errors.addressedTo.message}</div>}

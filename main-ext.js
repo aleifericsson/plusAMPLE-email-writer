@@ -5,6 +5,7 @@ import Popup from "./components/Popup.jsx";
 import './styles/Root.css'
 import { detectTextboxes, popup_pos, undetectTextboxes } from "./scripts/eleDetector.js";
 import Cookies from "js-cookie";
+import 'dotenv/config'
 
 const root = generateRoot()
 render(document.body, root)

@@ -4,10 +4,14 @@
     font-size: 1em;
     margin:1em 0 3em;
     color:#000;
-    background:#c7c7c7; 
+    background-color:#e0e0e0; 
     -webkit-border-radius:10px;
     -moz-border-radius:10px;
     border-radius:10px;
+}
+
+.popup.poop{
+  background-color:#e0e0e0; 
 }
 
 .popup:after {
@@ -18,14 +22,19 @@
     transform: translate(-50%,0);
     border-width:10px 10px 0; /* vary these values to change the angle of the vertex */
     border-style:solid;
-    border-color:#c7c7c7 transparent;
+    border-color:#384c44 transparent;
     /* reduce the damage in FF3.0 */
     display:block;
     width:0;
   }
   
 .popup.top {
-    background: #c7c7c7;
+    background-color: #e0e0e0;
+    transform: translate(-50%,0%);
+  }
+
+  .popup.top.poop {
+    background-color: #e0e0e0;
     transform: translate(-50%,0%);
   }
 
@@ -36,7 +45,7 @@
     left:50%; /* controls horizontal position */
     bottom:auto;
     border-width:0 10px 10px; /* vary these values to change the angle of the vertex */
-    border-color:#c7c7c7 transparent;
+    border-color:#9c9c9c transparent;
     display:block;
   }
 
@@ -49,11 +58,15 @@
 .top-bar{
   display:flex;
   justify-content: end;
-  background: #9c9c9c;
+  background-color: #9c9c9c;
   padding:2px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   padding-right:5px;
+}
+
+.top-bar.poop{
+  background-color: #9c9c9c;
 }
 
 .popup-content{
@@ -73,17 +86,17 @@
 
 .title{
   font-size: 1.2em;
-  padding-top:5px;
+  padding-top:2px;
 }
 
 .big-title{
   font-weight: bold;
   font-size: 1.4em;
-  padding-top:5px;
+  padding-top:2px;
 }
 
 .address-tit{
-  padding-top: 5px;
+  padding-top: 2px;
 }
 
 .desc-query, .input-tagging{
@@ -103,7 +116,7 @@ fieldset {
 .length-sel{
   font-size:0.8em;
   display: flex;
-  justify-content: left;
+  justify-content: space-between;
   gap: 20px;
   align-items: center;
   padding: 2px;
