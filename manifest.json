@@ -1,6 +1,6 @@
 {
     "manifest_version": 3,
-    "name": "+Ample",
+    "name": "+Ample AI Email Writer",
     "icons":{
         "256":"images/plusAmple-color.png"
     },
@@ -15,8 +15,10 @@
     ],
     
     "host_permissions":[
-      "http://*/*",
-      "https://*/*"
+      "https://mail.google.com/*",
+      "https://mail.yahoo.com/*",
+      "https://outlook.office.com/*",
+      "https://mail.proton.me/*"
     ], 
     "web_accessible_resources": [{
       "resources": ["images/close.png"],
@@ -26,8 +28,10 @@
       {
         "js": ["bundle-ext.js"],
         "matches":[
-            "http://*/*",
-            "https://*/*"
+            "https://mail.google.com/*",
+            "https://mail.yahoo.com/*",
+            "https://outlook.office.com/*",
+            "https://mail.proton.me/*"
         ]
       }
     ],

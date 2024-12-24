@@ -464,8 +464,11 @@ function Settings(_ref) {
         src: chrome.runtime.getURL('images/plusAmple-white.png')
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
         className: "settings-title",
-        children: "Settings"
+        children: "Email Writer"
       })]
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      className: "settings-title-alt",
+      children: "Settings"
     }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
       className: "toggle-box",
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("input", {
@@ -476,7 +479,7 @@ function Settings(_ref) {
         onChange: toggleScanning
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)("label", {
         className: "switch",
-        "for": "scan"
+        htmlFor: "scan"
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
         children: "Scan for textboxes on this site?"
       })]
@@ -67952,7 +67955,6 @@ function generateRoot() {
 }
 
 },{"./qol":222,"@babel/runtime/helpers/interopRequireDefault":13,"react":174,"react-dom/client":166,"react/jsx-runtime":175}],221:[function(require,module,exports){
-(function (process){(function (){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -67964,7 +67966,7 @@ var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"))
 var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
 var _generativeAi = require("@google/generative-ai");
 // Access your API key as an environment variable (see "Set up your API key" above)
-console.log(process.env.GEMINI_API_KEY);
+//console.log(process.env.GEMINI_API_KEY)
 //const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 var thing = ["LF5QYpkTv", "mQW1pALb", "AIzaSyBlqTVXE", "-cJnpBE4VxQ", "pBE4VxQ41hM", "aSyBlqTVd0OIk", "inQ3-A", "DxC-1", "Ba11S"];
 var genAI = new _generativeAi.GoogleGenerativeAI(thing[2] + thing[3] + thing[0] + thing[6]);
@@ -67980,7 +67982,7 @@ function _generateEmail() {
     return _regenerator["default"].wrap(function _callee$(_context) {
       while (1) switch (_context.prev = _context.next) {
         case 0:
-          systemPrompt = "Write an email addressed to the recipient: ".concat(addressedTo, " ").concat(theName ? theName : "", ".\n  if it is unknown, please do not write dear unknown recipient and write something more pleasing\n  write around ").concat(wordCount, " words, with a description of: ").concat(description, ". \n  include a salutation and a signature from ").concat(fromPerson, " but do not include the email subject.\n  here are some additional tags that you should stick to: ").concat(tags);
+          systemPrompt = "Write an email addressed to the recipient: ".concat(addressedTo, " ").concat(theName ? theName : "", ".\n  if it is unknown, please do not write dear unknown recipient and write something more pleasing\n  write around ").concat(wordCount, " words, with a description of: ").concat(description, ". \n  include a salutation and a signature from ").concat(fromPerson, " but do not include the email subject.\n  here are some additional tags that you should stick to: ").concat(tags, ".\n  Please ensure the email is grammatically correct and uses consistent pronouns.");
           console.log(systemPrompt);
           _context.next = 4;
           return model.generateContent(systemPrompt);
@@ -68002,8 +68004,7 @@ function _generateEmail() {
   return _generateEmail.apply(this, arguments);
 }
 
-}).call(this)}).call(this,require('_process'))
-},{"@babel/runtime/helpers/asyncToGenerator":11,"@babel/runtime/helpers/interopRequireDefault":13,"@babel/runtime/regenerator":22,"@google/generative-ai":23,"_process":154}],222:[function(require,module,exports){
+},{"@babel/runtime/helpers/asyncToGenerator":11,"@babel/runtime/helpers/interopRequireDefault":13,"@babel/runtime/regenerator":22,"@google/generative-ai":23}],222:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -68143,5 +68144,5 @@ var css = ".popup {\n  position: absolute;\n  transform: translate(-50%,-100%);\
 },{"browserify-css":61}],225:[function(require,module,exports){
 var css = ".react-root {\n  position: absolute;\n  width: 100vw;\n  position: 100vh;\n  top: 0px;\n  left: 0px;\n  z-index: 100000;\n}\n/*\r\ndiv.react-root.plus-ample * {\r\n    color:black;\r\n    padding:0px;\r\n    width:auto;\r\n    height:auto;\r\n}\r\n*/\n#settings-react-root {\n  color: black;\n  width: 200px;\n}\n"; (require("browserify-css").createStyle(css, { "href": "styles\\Root.css" }, { "insertAt": "bottom" })); module.exports = css;
 },{"browserify-css":61}],226:[function(require,module,exports){
-var css = ".logo {\n  height: calc(2em + 10px);\n  width: auto;\n}\n.settings-title {\n  font-size: 2em;\n  font-style: italic;\n  font-weight: bold;\n  color: white;\n  padding: 2px;\n}\n.settings-header {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  margin-bottom: 30px;\n  gap: 15px;\n  background-color: #384c44;\n  padding: 10px;\n}\n.switch {\n  position: relative;\n  display: inline-block;\n  width: 20px;\n  height: 11px;\n  background-color: #dadada;\n  border-radius: 20px;\n}\n.switch::after {\n  content: '';\n  position: absolute;\n  width: 9px;\n  height: 9px;\n  border-radius: 50%;\n  background-color: white;\n  top: 1px;\n  left: 1px;\n  transition: all 0.3s;\n}\n.checkbox:checked + .switch::after {\n  left: 10px;\n}\n.checkbox:checked + .switch {\n  background-color: #7983ff;\n}\n.checkbox {\n  display: none;\n}\n.toggle-box {\n  display: flex;\n  align-items: center;\n  justify-content: space-around;\n}\n"; (require("browserify-css").createStyle(css, { "href": "styles\\Settings.css" }, { "insertAt": "bottom" })); module.exports = css;
+var css = ".logo {\n  height: calc(2em + 10px);\n  width: auto;\n}\n.settings-title {\n  font-size: 2em;\n  font-style: italic;\n  font-weight: bold;\n  color: white;\n  padding: 2px;\n}\n.settings-title-alt {\n  font-size: 1.5em;\n  font-style: italic;\n  font-weight: bold;\n  color: black;\n  padding: 2px;\n}\n.settings-header {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  margin-bottom: 30px;\n  gap: 15px;\n  background-color: #384c44;\n  padding: 10px;\n}\n.switch {\n  position: relative;\n  display: inline-block;\n  width: 20px;\n  height: 11px;\n  background-color: #dadada;\n  border-radius: 20px;\n}\n.switch::after {\n  content: '';\n  position: absolute;\n  width: 9px;\n  height: 9px;\n  border-radius: 50%;\n  background-color: white;\n  top: 1px;\n  left: 1px;\n  transition: all 0.3s;\n}\n.checkbox:checked + .switch::after {\n  left: 10px;\n}\n.checkbox:checked + .switch {\n  background-color: #7983ff;\n}\n.checkbox {\n  display: none;\n}\n.toggle-box {\n  display: flex;\n  align-items: center;\n  justify-content: space-around;\n}\n"; (require("browserify-css").createStyle(css, { "href": "styles\\Settings.css" }, { "insertAt": "bottom" })); module.exports = css;
 },{"browserify-css":61}]},{},[8]);

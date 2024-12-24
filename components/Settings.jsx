@@ -16,8 +16,9 @@ export default function Settings({init_scanning}){
         <>
             <div className="settings-header">
                 <img className="logo" src={ chrome.runtime.getURL('images/plusAmple-white.png')}></img>
-                <span className="settings-title">Settings</span>
+                <span className="settings-title">Email Writer</span>
             </div>
+            <div className="settings-title-alt">Settings</div>
             <div className="toggle-box">
                 <input
                     type="checkbox"
@@ -26,7 +27,7 @@ export default function Settings({init_scanning}){
                     checked={scanning}
                     onChange={toggleScanning}
                 />                
-                <label className="switch" for="scan"></label>
+                <label className="switch" htmlFor="scan"></label>
                 <div>Scan for textboxes on this site?</div>
             </div>
         </>

@@ -13,7 +13,8 @@ export async function generateEmail(addressedTo,theName, description, tags, word
   if it is unknown, please do not write dear unknown recipient and write something more pleasing
   write around ${wordCount} words, with a description of: ${description}. 
   include a salutation and a signature from ${fromPerson} but do not include the email subject.
-  here are some additional tags that you should stick to: ${tags}`;
+  here are some additional tags that you should stick to: ${tags}.
+  Please ensure the email is grammatically correct and uses consistent pronouns.`;
   console.log(systemPrompt)
   const result = await model.generateContent(systemPrompt);
   const response = await result.response;

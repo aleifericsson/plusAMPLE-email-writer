@@ -67872,7 +67872,6 @@ function generateRoot() {
 }
 
 },{"./qol":220,"@babel/runtime/helpers/interopRequireDefault":11,"react":172,"react-dom/client":164,"react/jsx-runtime":173}],219:[function(require,module,exports){
-(function (process){(function (){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -67884,7 +67883,7 @@ var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"))
 var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
 var _generativeAi = require("@google/generative-ai");
 // Access your API key as an environment variable (see "Set up your API key" above)
-console.log(process.env.GEMINI_API_KEY);
+//console.log(process.env.GEMINI_API_KEY)
 //const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 var thing = ["LF5QYpkTv", "mQW1pALb", "AIzaSyBlqTVXE", "-cJnpBE4VxQ", "pBE4VxQ41hM", "aSyBlqTVd0OIk", "inQ3-A", "DxC-1", "Ba11S"];
 var genAI = new _generativeAi.GoogleGenerativeAI(thing[2] + thing[3] + thing[0] + thing[6]);
@@ -67900,7 +67899,7 @@ function _generateEmail() {
     return _regenerator["default"].wrap(function _callee$(_context) {
       while (1) switch (_context.prev = _context.next) {
         case 0:
-          systemPrompt = "Write an email addressed to the recipient: ".concat(addressedTo, " ").concat(theName ? theName : "", ".\n  if it is unknown, please do not write dear unknown recipient and write something more pleasing\n  write around ").concat(wordCount, " words, with a description of: ").concat(description, ". \n  include a salutation and a signature from ").concat(fromPerson, " but do not include the email subject.\n  here are some additional tags that you should stick to: ").concat(tags);
+          systemPrompt = "Write an email addressed to the recipient: ".concat(addressedTo, " ").concat(theName ? theName : "", ".\n  if it is unknown, please do not write dear unknown recipient and write something more pleasing\n  write around ").concat(wordCount, " words, with a description of: ").concat(description, ". \n  include a salutation and a signature from ").concat(fromPerson, " but do not include the email subject.\n  here are some additional tags that you should stick to: ").concat(tags, ".\n  Please ensure the email is grammatically correct and uses consistent pronouns.");
           console.log(systemPrompt);
           _context.next = 4;
           return model.generateContent(systemPrompt);
@@ -67922,8 +67921,7 @@ function _generateEmail() {
   return _generateEmail.apply(this, arguments);
 }
 
-}).call(this)}).call(this,require('_process'))
-},{"@babel/runtime/helpers/asyncToGenerator":9,"@babel/runtime/helpers/interopRequireDefault":11,"@babel/runtime/regenerator":20,"@google/generative-ai":21,"_process":152}],220:[function(require,module,exports){
+},{"@babel/runtime/helpers/asyncToGenerator":9,"@babel/runtime/helpers/interopRequireDefault":11,"@babel/runtime/regenerator":20,"@google/generative-ai":21}],220:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
